@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script type="text/javascript" src="js/jquery-3.3.1.js"></script>
+  <script type="text/javascript" src="js/scripts.js"></script>
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="css/styles.css">
+
+  <title>Pig Dice</title>
+</head>
+<body>
+  <div class="container">
+    <h1>Pig Dice Game</h1><br>
+    <form id="dice">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="name">Enter a name: </label>
+            <input type="text" id="name1" class="form-control">
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="name2">Enter a name: </label>
+            <input type="text" id="name2" class="form-control">
+          </div>
+        </div>
+      </div><br>
+      <button type="submit" name="button">Submit</button>
+
+    </form><br><br>
+
+    <div id="output">
+
+    </div>
+    <div class="result-show">
+      <h4>Roll the Dice</h4>
+      <div class="row">
+        <div class="col-md-4">
+          <button type="button" id="diceRoller">Roll</button>
+        </div>
+        <div class="col-md-4">
+          <h6 id="diceResult"></h6>
+          <button type="button" id="endTurn">Stop</button>
+        </div>
+      </div>
+      <p>Your turn score is <span class="turn-score"></span></p>
+      <h4>Scoreboard</h4>
+      <div class="row">
+        <div class="col-md-4">
+          <p><span class="outputName1"></span></p>
+          <p>Your total score is: <span class="total-score"></span></p>
+        </div>
+        <div class="col-md-4">
+          <p><span class="outputName2"></span></p>
+          <p>Your total score is <span class="total-score"></span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  </body>
+  </html>
