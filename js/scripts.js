@@ -24,11 +24,12 @@ Game.prototype.turn = function() {
     return 1;
   }
 }
-function Player (name, currentScore, turn, id) {
+function Player (name, currentScore, id, playerType) {
   this.name = name,
   this.currentScore = currentScore,
-  this.turn = turn,
-  this.id = id
+  // this.turn = turn,
+  this.id = id,
+  this.playerType = playerType
 }
 var diceResult = function(num) {
   var dice = Math.floor(Math.random() * num) +1;
@@ -77,6 +78,20 @@ var endTurn = function() {
     $("#player2").css("color", "black");
 
   }
+
+  if (newGame.players[1].playerType === "computer") {
+    var diceRoll = diceResult(6);
+    $("#diceResult").html("<img src='img/" +diceRoll + ".png'>");
+    $(".turn-score").html(turnScoreFunction(diceRoll));
+
+    var turnCounter = newGame.turn();
+    var activePlayer = newGame.players[turnCounter];
+    activePlayer.totalScore(turnScore);
+    turnScore = 0;
+    if(activePlayer.currentScore > 20) {
+      alert("congratulations " + activePlayer.name +"! You are the winner!")
+    }
+  }
 };
 
 $(document).ready(function() {
@@ -85,10 +100,14 @@ $(document).ready(function() {
     $("#player1").css("color", "red");
     var inputtedName1 = $("input#name1").val();
     var inputtedName2 = $("input#name2").val();
+    var humanOrComputer = $("#humanOrComputer").attr('selected',true).val();
+    console.log(humanOrComputer);
     $("input#name1").val("");
     $("input#name2").val("");
-    var player1 = new Player(inputtedName1, 0)
-    var player2 = new Player(inputtedName2, 0)
+    var player1 = new Player(inputtedName1, 0);
+    var player2 = new Player(inputtedName2, 0, "", humanOrComputer);
+    console.log(player2);
+
     newGame.addPlayer(player1);
     newGame.addPlayer(player2);
     showPlayer(player1, player2);
